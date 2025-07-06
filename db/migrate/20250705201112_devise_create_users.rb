@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[8.0]
       t.timestamps null: false
     end
 
+     # PostgreSQL treats NULLs as distinct, so this still enforces uniqueness only on non-NULL emails
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
